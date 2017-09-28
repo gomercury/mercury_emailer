@@ -3,7 +3,7 @@ class ApplicationMailer < ActionMailer::Base
   	subs = {}
 		if email.subs
 			email.subs.each do |key, value|
-				subs["%" + key + "%"] = value
+				subs["%" + key + "%"] = [value]
 			end
 		end
 
@@ -13,7 +13,7 @@ class ApplicationMailer < ActionMailer::Base
 				"templates": {
 					"settings": {
 						"enable": 1,
-						"template_id": email.template_id,
+						"template_id": email.template.sendgrid_id,
 					}
 				}
 			}

@@ -9,7 +9,7 @@ namespace :emails do
 		log.info "#{emails.count} pending #{'email'.pluralize(emails.count)} to send..."
 		emails.each do |email|
 			log.info "sending email #{email.id}"
-			email = TwilioService.send_email(email)
+			email = SendgridService.send_email(email)
 			log.info "email #{email.id} #{email.status}"
 		end
 
@@ -17,7 +17,7 @@ namespace :emails do
 		log.info "#{emails.count} failed #{'email'.pluralize(emails.count)} to send..."
 		emails.each do |email|
 			log.info "sending email #{email.id}"
-			email = TwilioService.send_email(email)
+			email = SendgridService.send_email(email)
 			log.info "email #{email.id} #{email.status}"
 		end
 
