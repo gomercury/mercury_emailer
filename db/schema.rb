@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170928161403) do
     t.integer  "template_id",                     null: false
     t.string   "to",                              null: false
     t.string   "from",                            null: false
-    t.json     "options"
+    t.json     "subs"
     t.text     "error"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -34,11 +34,10 @@ ActiveRecord::Schema.define(version: 20170928161403) do
   end
 
   create_table "templates", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.text     "subject",    null: false
-    t.text     "html",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "sendgrid_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["name"], name: "index_templates_on_name", using: :btree
   end
 

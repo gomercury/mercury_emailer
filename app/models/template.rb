@@ -1,8 +1,7 @@
 class Template < ApplicationRecord
 	# validations
 	validates :name, presence: true
-	validates :subject, presence: true
-	validates :html, presence: true
+	validates :sendgrid_id, presence: true
 
 	# relationships
 	has_many :emails

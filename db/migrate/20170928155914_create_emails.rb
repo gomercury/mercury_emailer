@@ -5,7 +5,7 @@ class CreateEmails < ActiveRecord::Migration[5.0]
     	t.integer :template_id, null: false
     	t.string :to, null: false
     	t.string :from, null: false
-    	t.json :options
+    	t.json :subs
     	t.text :error
       t.timestamps
     end

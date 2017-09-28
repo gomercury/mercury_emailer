@@ -1,8 +1,7 @@
 FactoryGirl.define do
 	factory :template do
-		name 		Faker::RickAndMorty.character
-		subject Faker::RickAndMorty.quote
-		html 		Faker::RickAndMorty.quote
+		name 				"RESERVATION_CONFIRMED"
+		sendgrid_id "3b7ac025-f0d5-4540-baba-30e2b4c8a9e8"
 	end
 
 	factory :email do
