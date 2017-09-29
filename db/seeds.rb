@@ -11,6 +11,10 @@ templates = [
 		name: "RESERVATION_CANCELLED",
 		sendgrid_id: "27853a42-54de-4538-9a9e-b05c010f9483",
 	},
+	{
+		name: "REQUEST_CREATED",
+		sendgrid_id: "45101dd8-62ce-4c54-88ad-046ac04412f1",
+	},
 ]
 
 templates.each do |params|
