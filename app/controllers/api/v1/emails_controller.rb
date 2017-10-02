@@ -7,19 +7,26 @@ module Api
 
 			def create
 				if template = Template.find_by_name(params[:template][:name])
-					email = Email.new(
-						template_id: template.id,
-						to: params[:to],
-						from: params[:from],
-						subs: params[:subs],
-					)
+					email = Email.new(email_params)
+					email.template_id = template.id
 					if email.save
-						render status: :created, json: email
+						render status: 201, json: {
+							status: 201,
+							email: email,
+							template: template,
+						}
 					else
-						render status: :bad_request, json: { errors: email.errors.full_messages }
+						render status: 400, json: { 
+							status: 400,
+							errors: email.errors.full_messages,
+							template: template,
+						}
 					end
 				else
-					render status: :bad_request, json: { errors: "template does not exist" }
+					render status: 400, json: { 
+						status: 400,
+						errors: ["template does not exist"],
+					}
 				end
 			end
 			
@@ -29,6 +36,10 @@ module Api
 					authenticate_or_request_with_http_token do |token, options|
 						ApiKey.exists?(access_token: token)
 					end
+				end
+
+				def email_params
+					params.require(:email).permit(:to, :from, :template_id, :subs)
 				end
 		end
 	end
